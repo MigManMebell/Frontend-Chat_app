@@ -88,7 +88,7 @@ const RegisterPage = () => {
             <button
               type="button"
               onClick={() => navigate('/login')}
-              className="text-white font-semibold hover:underline transition-all duration-300 hover:text-white/90"
+              className="btn-link"
             >
               Войти
             </button>

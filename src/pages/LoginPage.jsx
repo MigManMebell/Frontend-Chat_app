@@ -50,8 +50,8 @@ const LoginPage = () => {
           </div>
           
           {error && (
-            <div className="glass-input p-3 border-red-400 bg-red-50/20">
-              <p className="text-sm text-red-200">{error}</p>
+            <div className="error-box">
+              <p>{error}</p>
             </div>
           )}
           
@@ -86,7 +86,7 @@ const LoginPage = () => {
             <button
               type="button"
               onClick={() => navigate('/register')}
-              className="text-white font-semibold hover:underline transition-all duration-300 hover:text-white/90"
+              className="btn-link"
             >
               Зарегистрироваться
             </button>
