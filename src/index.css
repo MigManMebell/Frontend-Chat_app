@@ -67,6 +67,7 @@ body {
   outline: none;
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.3);
 }
 
 .glass-input::placeholder {
@@ -80,6 +81,18 @@ body {
 
 .animate-fadeInUp {
   animation: fadeInUp 600ms ease-out both;
+}
+
+.error-box {
+  background: rgba(255, 100, 100, 0.15);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 12px;
+  color: #fdd;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .btn-primary {

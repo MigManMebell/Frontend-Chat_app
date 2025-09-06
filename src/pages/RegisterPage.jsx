@@ -45,8 +45,8 @@ const RegisterPage = () => {
           </div>
           
           {error && (
-            <div className="glass-input p-3 border-red-400 bg-red-50/20">
-              <p className="text-sm text-red-200">{error}</p>
+            <div className="error-box">
+              <p>{error}</p>
             </div>
           )}
           
