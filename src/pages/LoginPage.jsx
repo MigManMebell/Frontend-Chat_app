@@ -13,14 +13,28 @@ const LoginPage = () => {
     setLoading(true);
     setError('');
     try {
-      // This will be replaced with a fetch call to the FastAPI backend
-      console.log('Logging in with:', email, password);
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      localStorage.setItem('token', 'fake-token');
+      const formData = new URLSearchParams();
+      formData.append('username', email);
+      formData.append('password', password);
+
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/token`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Login failed');
+      }
+
+      const data = await response.json();
+      localStorage.setItem('token', data.access_token);
       navigate('/chat');
     } catch (err) {
-      setError('Login failed');
+      setError(err.message);
     } finally {
       setLoading(false);
     }

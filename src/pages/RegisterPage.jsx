@@ -14,13 +14,22 @@ const RegisterPage = () => {
     setLoading(true);
     setError('');
     try {
-      // This will be replaced with a fetch call to the FastAPI backend
-      console.log('Registering with:', email, password, nickname);
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password, nickname }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Registration failed');
+      }
+
       navigate('/login');
     } catch (err) {
-      setError('Registration failed');
+      setError(err.message);
     } finally {
       setLoading(false);
     }
